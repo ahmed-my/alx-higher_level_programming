@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 if __name__ == "__main__":
-
+    """ function to perform basic arithematic operations"""
     from calculator_1 import add, sub, mul, div
     import sys
     count = len(sys.argv) - 1
