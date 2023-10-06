@@ -1,6 +1,5 @@
 #!/usr/bin/python3
 if __name__ == "__main__":
-    """ function to perform basic arithematic operations"""
     from calculator_1 import add, sub, mul, div
     import sys
     count = len(sys.argv) - 1
@@ -13,6 +12,7 @@ if __name__ == "__main__":
     if operator_symbol not in operator:
         print("Unknown operator. Available operations: +, -, * and /")
         sys.exit(1)
+
     a = int(sys.argv[1])
     b = int(sys.argv[3])
 
