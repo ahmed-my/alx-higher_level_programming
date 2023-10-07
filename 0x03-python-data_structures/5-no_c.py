@@ -1,3 +1,4 @@
 #!/usr/bin/python3
-string = [x for x in my_string if x != 'c' and x != 'C']
-return ("".join(string))
+def no_c(my_string):
+    string = [x for x in my_string if x != 'c' and x != 'C']
+    return ("".join(string))
