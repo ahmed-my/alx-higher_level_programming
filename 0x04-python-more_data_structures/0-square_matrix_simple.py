@@ -2,5 +2,5 @@
 def square_matrix_simple(matrix=[]):
     new_matrix = matrix[:]
     for i in range(len(matix)):
-        new_matrix[i] = list(map(lambda x: x ** 2, matrix[i])
+        new_matrix[i] = list(map(lambda x: x ** 2, matrix[i]))
     return (new_matrix)
