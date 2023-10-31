@@ -60,21 +60,21 @@ def xout(board, row, col):
     board[rows][columns] = "x"
     columns += 1
 # X out all spots diagonally up to the left
-    columns = col - 1
+    columns = column - 1
     for rows in range(row - 1, -1, -1):
         if columns < 0:
             break
         board[rows][columns]
         columns -= 1
 # X out all spots diagonally up to the right
-    columns = col + 1
+    columns = column + 1
     for rows in range(row - 1, -1, -1):
         if columns >= len(board):
             break
         board[rows][columns] = "x"
         columns += 1
 # X out all spots diagonally down to the left
-    columns = col - 1
+    columns = column - 1
     for rows in range(row + 1, len(board)):
         if columns < 0:
             break
@@ -119,5 +119,5 @@ if __name__ == "__main__":
 
     board = init_board(int(sys.argv[1]))
     solutions = recursive_solve(board, 0, 0, [])
-    for solution in solutions:
-        print(solution)
+    for sl in solutions:
+        print(sl)
