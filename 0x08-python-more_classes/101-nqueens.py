@@ -25,10 +25,10 @@ def board_deepcopy(board):
 def get_solution(board):
     """Return the list of lists representation of a solved chessboard."""
     solution = []
-    for rows in range(len(board)):
-        for columns in range(len(board)):
-            if board[rows][columns] == "Q":
-                solution.append([rows, columns])
+    for r in range(len(board)):
+        for c in range(len(board)):
+            if board[r][c] == "Q":
+                solution.append([r, c])
                 break
     return (solution)
 
@@ -40,38 +40,38 @@ def xout(board, row, col):
         board (list): The current working chessboard.
         row (int): The row where a queen was last played.
         col (int): The column where a queen was last played."""
-    for columns in range(col + 1, len(board)):
-        board[row][columns] = "x"
-    for columns in range(col - 1, -1, -1):
-        board[row][columns] = "x"
-    for rows in range(row + 1, len(board)):
+    for c in range(col + 1, len(board)):
+        board[row][c] = "x"
+    for c in range(col - 1, -1, -1):
+        board[row][c] = "x"
+    for r in range(row + 1, len(board)):
         board[rows][col] = "x"
-    for rows in range(row - 1, -1, -1):
-        board[rows][col] = "x"
-    columns = col + 1
-    for rows in range(row + 1, len(board)):
-        if columns >= len(board):
-            break
-    board[rows][columns] = "x"
-    columns += 1
-    columns = col - 1
-    for rows in range(row - 1, -1, -1):
-        if columns < 0:
-            break
-        board[rows][columns]
-        columns -= 1
-    columns = col + 1
     for r in range(row - 1, -1, -1):
-        if columns >= len(board):
+        board[r][col] = "x"
+    c = col + 1
+    for r in range(row + 1, len(board)):
+        if c >= len(board):
             break
-        board[rows][columns] = "x"
-        columns += 1
-    columns = col - 1
-    for rows in range(row + 1, len(board)):
-        if columns < 0:
+    board[r][c] = "x"
+    c += 1
+    c = col - 1
+    for r in range(row - 1, -1, -1):
+        if c < 0:
             break
-        board[rows][columns] = "x"
-        columns -= 1
+        board[r][c]
+        c -= 1
+    c = col + 1
+    for r in range(row - 1, -1, -1):
+        if c >= len(board):
+            break
+        board[r][c] = "x"
+        c += 1
+    c = col - 1
+    for r in range(row + 1, len(board)):
+        if c < 0:
+            break
+        board[r][c] = "x"
+        c -= 1
 
     def recursive_solve(board, row, queens, solutions):
         """Recursively solve an N-queens puzzle.
@@ -88,11 +88,11 @@ def xout(board, row, col):
             solutions.append(get_solution(board))
             return (solutions)
 
-        for columns in range(len(board)):
-            if board[row][columns] == " ":
+        for c in range(len(board)):
+            if board[row][c] == " ":
                 tmp_board = board_deepcopy(board)
-                tmp_board[row][columns] = "Q"
-                xout(tmp_board, row, columns)
+                tmp_board[row][c] = "Q"
+                xout(tmp_board, row, c)
                 solutions = recursive_solve(tmp_board, row + 1,
                                             queens + 1, solutions)
         return (solutions)
