@@ -1,1 +1,9 @@
  >>> say_my_name = __import__('3-say_my_name').say_my_name
+ >>> say_my_name("Brennan", "Baraban")
+ >>> say_my_name("Cornelius Maxwell", "Jones II")
+ >>> say_my_name("Brennan")
+ >>> say_my_name(6, "James")
+ >>> say_my_name("LeBron", ["Cavs", "Lakers", "Heat"])
+ >>> say_my_name({"LeBron": 6, "James": 23}, 7.7)
+ >>> say_my_name(None)
+ >>> say_my_name()
