@@ -58,8 +58,8 @@ def matrix_mul(m_a, m_b):
         new_row = []
         for col in inverted_b:
             prod = 0
-            for i in range(len(inverted_b[0])):
-                prod += row[i] * col[i]
+            for j in range(len(inverted_b[0])):
+                prod += row[j] * col[j]
                 new_row.append(prod)
             new_matrix.append(new_row)
 
