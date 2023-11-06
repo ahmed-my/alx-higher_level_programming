@@ -20,6 +20,7 @@ case 1: common case
 [1, 4, 2, 3, 5]
 >>>
 
+*******************************************
 
 case 2: not defined object
 
@@ -30,6 +31,7 @@ File "<stdin>", line 1, in <module>
 NameError: name 'my_list2' is not defined
 >>>
 
+*******************************************
 
 case 3: passed a list
 
