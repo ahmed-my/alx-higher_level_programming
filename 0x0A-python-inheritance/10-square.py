@@ -7,12 +7,12 @@ class Square(Rectangle):
     """Represents a square."""
 
 
-def __init__(self, size):
-    """Initializes a new square.
+    def __init__(self, size):
+        """Initializes a new square.
 
-    Args:
-        size (int): new square size.
-    """
-    self.integer_validator("size", size)
-    super().__init__(size, size)
-    self.__size = size
+        Args:
+            size (int): new square size.
+        """
+        self.integer_validator("size", size)
+        super().__init__(size, size)
+        self.__size = size
