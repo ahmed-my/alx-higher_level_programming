@@ -2,8 +2,6 @@
 """Defines a base model class."""
 import json
 import csv
-import matplotlib
-matplotlib.use('Agg')
 import turtle
 
 
