@@ -3,7 +3,6 @@
 -- Results must be sorted in ascending order by cities.id
 -- use only one SELECT statement
 SELECT cities.id, cities.name, states.name 
-FROM cities 
-LEFT JOIN states 
+FROM cities LEFT JOIN states 
 ON states.id = cities.state_id
-ORDER BY citites.id;
+ORDER BY cities.id;
