@@ -7,15 +7,16 @@ from sqlalchemy import create_engine, Column, Integer, String, Sequence
 from sqlalchemy.orm import declarative_base
 from sqlalchemy.orm import sessionmaker
 
-user = sys.argv[1]
-passwd = sys.argv[2]
-host = "localhost"
-db = sys.argv[3]
+if __name__ == "__main__":
+    user = sys.argv[1]
+    passwd = sys.argv[2]
+    host = "localhost"
+    db = sys.argv[3]
 
-engine = create_engine(f"mysql+mysqldb://{user}:{passwd}@{host}/{db}",
+    engine = create_engine(f"mysql+mysqldb://{user}:{passwd}@{host}/{db}",
                        pool_pre_ping=True)
 
-Base = declarative_base()
+    Base = declarative_base()
 
 
 class State(Base):
