@@ -12,7 +12,7 @@ port = 3306
 if __name__ == "__main__":
     db = MySQLdb.connect(host, user, passwd, database, port)
     cursor = db.cursor()
-    cursor.execute("SELECT * FROM states")
+    cursor.execute("SELECT * FROM states ORDER BY id ASC")
     states = cursor.fetchall()
     for state in states:
         print(state)
