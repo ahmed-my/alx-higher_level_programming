@@ -5,13 +5,18 @@ import sys
 
 
 if __name__ == "__main__":
-    db = MySQLdb.connect(host="localhost", user=sys.argv[1],
-                         passwd=sys.argv[2], db=sys.argv[3], port=3306)
+    username = sys.argv[1]
+    password = sys.argv[2]
+    database = sys.argv[3]
+    state_name = sys.argv[4]
+
+    db = MySQLdb.connect(host="localhost", user=username,
+                         passwd=password, db=database, port=3306)
     cursor = db.cursor()
-    cursor.execute("SELECT * FROM states ORDER BY id ASC")
+    cursor.execute("SELECT * FROM states WHERE name LIKE BINARY '{}'"
+                   .format(state_name))
     states = cursor.fetchall()
     for state in states:
-        if state[1] == sys.argv[4]:
-            print(state)
+        print(state)
     cursor.close()
     db.close()
