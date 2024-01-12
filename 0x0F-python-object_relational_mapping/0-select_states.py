@@ -4,7 +4,6 @@ Lists all states from the database hbtn_0e_0_usa
 """
 import MySQLdb
 import sys
-
 from sqlalchemy import create_engine, Column, Integer, String, Sequence
 from sqlalchemy.orm import declarative_base
 from sqlalchemy.orm import sessionmaker
