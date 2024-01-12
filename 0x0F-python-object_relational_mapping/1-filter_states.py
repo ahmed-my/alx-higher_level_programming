@@ -1,35 +1,17 @@
 #!/usr/bin/python3
+"""  lists all states from the database hbtn_0e_0_usa starting with N"""
 import MySQLdb
 import sys
 
-from sqlalchemy import create_engine, Column, Integer, String, Sequence
-from sqlalchemy.orm import declarative_base
-from sqlalchemy.orm import sessionmaker
 
-user = sys.argv[1]
-passwd = sys.argv[2]
-host = "localhost"
-db = sys.argv[3]
-
-engine = create_engine(f"mysql+mysqldb://{user}:{passwd}@{host}/{db}",
-                       pool_pre_ping=True)
-
-Base = declarative_base()
-
-
-class State(Base):
-    __tablename__ = 'states'
-
-    id = Column(Integer, Sequence('state_id_seq'), primary_key=True)
-    name = Column(String(256))
-
-
-Session = sessionmaker(bind=engine)
-session = Session()
-
-states = session.query(State).order_by(State.id).all()
-for state in states:
-    if state.name[0] == "N":
-        print((state.id, state.name))
-
-session.close()
+if __name__ == "__main__":
+    db = MySQLdb.connect(host="localhost", user=sys.argv[1],
+                         passwd=sys.argv[2], db=sys.argv[3], port=3306)
+    cursor = db.cursor()
+    cursor.execute("SELECT * FROM states")
+    states = cursor.fetchall()
+    for state in states:
+        if state[1][0] == "N":
+            print(state)
+    cursor.close()
+    db.close()
