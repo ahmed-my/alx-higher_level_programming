@@ -17,7 +17,7 @@ if __name__ == '__main__':
 
     response = get(url)
     json = response.json()
-    
+
     count = 1
     for elem in json:
         if count > 10:
