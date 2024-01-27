@@ -7,6 +7,7 @@ from sys import argv
 
 
 if __name__ == '__main__':
-    response = get(argv[1])
-    value = headers.get('X-Request-Id')
-    print(response.value)
+    url = argv[1]
+    response = get(url)
+    value = response.headers.get('X-Request-Id')
+    print(value)
