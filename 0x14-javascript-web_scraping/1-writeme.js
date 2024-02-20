@@ -4,7 +4,7 @@ const fs = require('fs');
 const filePath = process.argv[2];
 const contentToWrite = process.argv[3];
 if (!filePath || !contentToWrite) {
-  console.error('provide first and second argument from command line');
+  process.exit(1);
 }
 fs.writeFile(filePath, contentToWrite, 'utf8', (err) => {
   if (err) {
