@@ -2,9 +2,9 @@
 
 const request = require('request');
 
-const APIURL = process.argv[2];
+const apiUrl = process.argv[2];
 
-request(APIURL, (error, response, body) => {
+request(apiUrl, function (error, response, body) {
   if (!error && response.statusCode === 200) {
     try {
       const todos = JSON.parse(body);
