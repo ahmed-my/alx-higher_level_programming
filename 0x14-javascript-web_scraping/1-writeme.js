@@ -10,6 +10,6 @@ fs.writeFile(filePath, content_to_write, 'utf-8', (err) => {
   if (err) {
     console.error(err);
   } else {
-    process.exit(1);
+    console.log('successful');
   }
 });
