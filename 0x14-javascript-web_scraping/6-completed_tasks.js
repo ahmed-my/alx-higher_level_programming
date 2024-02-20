@@ -1,33 +1,33 @@
 #!/usr/bin/node
-
 const request = require('request');
 
-const apiUrl = process.argv[2];
+// Get the API URL from the command line arguments
+const apiUrl = process.argv[2] || 'https://jsonplaceholder.typicode.com/todos';
 
-request(apiUrl, function (error, response, body) {
-  if (!error && response.statusCode === 200) {
-    try {
-      const todos = JSON.parse(body);
+// Make a GET request to the API
+request.get(apiUrl, (error, response, body) => {
+    if (error) {
+        console.error(error);
+    } else {
+        // Parse the JSON response body
+        const todos = JSON.parse(body);
 
-      const completed = {};
+        // Create a map to store the count of completed tasks for each user
+        const completedTasksByUser = new Map();
 
-      todos.forEach((todo) => {
-        if (todo.completed) {
-          if (completed[todo.userId] === undefined) {
-            completed[todo.userId] = 1;
-          } else {
-            completed[todo.userId]++;
-          }
-        }
-      });
+        // Iterate through the todos and count completed tasks for each user
+        todos.forEach(todo => {
+            if (todo.completed) {
+                const userId = todo.userId;
+                completedTasksByUser.set(userId, (completedTasksByUser.get(userId) || 0) + 1);
+            }
+        });
 
-      const output = `{${Object.entries(completed).map(([key, value]) => ` '${key}': ${value}`).join(',\n ')} }`;
-
-      console.log(Object.keys(completed).length > 2 ? output : completed);
-    } catch (parseError) {
-      console.error('Error parsing JSON:', parseError);
+        // Print users with completed tasks
+        console.log('Users with completed tasks:');
+        completedTasksByUser.forEach((count, userId) => {
+            console.log(`User ${userId}: ${count} completed tasks`);
+        });
     }
-  } else {
-    console.error('Error:', error);
-  }
 });
+
